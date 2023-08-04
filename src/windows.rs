@@ -4,7 +4,7 @@
 use std::io::Write;
 use std::fs::File;
 use std::env;
-use tauri::api::process::{Command};
+use tauri::api::process::Command;
 use crate::declare::PrintOptions;
 /**
  * Create sm.exe to temp
@@ -22,7 +22,7 @@ fn create_file(path: String, bin: &[u8]) -> std::io::Result<()> {
  * init sm.exe
  */
 pub fn init_windows() {
-    let sm = include_bytes!("bin/sm");
+    let sm: &[u8] = include_bytes!("bin/sm");
     let dir: std::path::PathBuf = env::temp_dir();
     let result: Result<(), std::io::Error>  = create_file(dir.display().to_string(),sm);
     if result.is_err() {
